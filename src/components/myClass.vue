@@ -20,6 +20,7 @@
       ref="realBox"
       :style="pos"
       @mouseenter="enter"
+      @click="click"
       @mouseleave="leave"
       @touchstart="touchStart"
       @touchmove="touchMove"
@@ -134,6 +135,7 @@
         return this.data.length >= this.options.limitMoveNum
       },
       hoverStopSwitch () {
+        console.log('123---', this.options.hoverStop, this.autoPlay, this.scrollSwitch)
         return this.options.hoverStop && this.autoPlay && this.scrollSwitch
       },
       canTouchScroll () {
@@ -251,6 +253,10 @@
         }, this.delay)
       },
       enter () {
+        if (this.hoverStopSwitch) this._stopMove()
+      },
+      click() {
+        console.log('this.hoverStopSwitch----', this.hoverStopSwitch)
         if (this.hoverStopSwitch) this._stopMove()
       },
       leave () {
