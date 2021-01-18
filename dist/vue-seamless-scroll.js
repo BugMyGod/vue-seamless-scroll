@@ -98,7 +98,9 @@ exports.default = {
       copyHtml: '',
       height: 0,
       width: 0,
-      realBoxWidth: 0 };
+      realBoxWidth: 0,
+      clickFlag: false
+    };
   },
 
   props: {
@@ -184,6 +186,7 @@ exports.default = {
       return this.data.length >= this.options.limitMoveNum;
     },
     hoverStopSwitch: function hoverStopSwitch() {
+      console.log('123---', this.options.hoverStop, this.autoPlay, this.scrollSwitch);
       return this.options.hoverStop && this.autoPlay && this.scrollSwitch;
     },
     canTouchScroll: function canTouchScroll() {
@@ -308,10 +311,23 @@ exports.default = {
       }, this.delay);
     },
     enter: function enter() {
-      if (this.hoverStopSwitch) this._stopMove();
+      if (!this.clickFlag) {
+        if (this.hoverStopSwitch) this._stopMove();
+      }
+    },
+    toggleClick: function toggleClick() {
+      this.clickFlag = !this.clickFlag;
+      if (this.clickFlag) {
+        this._stopMove();
+      } else {
+        this._startMove();
+      }
+      console.log('toggleClick----', this.clickFlag);
     },
     leave: function leave() {
-      if (this.hoverStopSwitch) this._startMove();
+      if (!this.clickFlag) {
+        if (this.hoverStopSwitch) this._startMove();
+      }
     },
     _move: function _move() {
       if (this.isHover) return;
@@ -817,6 +833,7 @@ var render = function() {
         style: _vm.pos,
         on: {
           mouseenter: _vm.enter,
+          click: _vm.toggleClick,
           mouseleave: _vm.leave,
           touchstart: _vm.touchStart,
           touchmove: _vm.touchMove,

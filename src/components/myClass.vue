@@ -20,7 +20,7 @@
       ref="realBox"
       :style="pos"
       @mouseenter="enter"
-      @click="click"
+      @click="toggleClick"
       @mouseleave="leave"
       @touchstart="touchStart"
       @touchmove="touchMove"
@@ -49,6 +49,7 @@
         height: 0,
         width: 0, // 外容器宽度
         realBoxWidth: 0, // 内容实际宽度
+        clickFlag: false
       }
     },
     props: {
@@ -253,14 +254,23 @@
         }, this.delay)
       },
       enter () {
-        if (this.hoverStopSwitch) this._stopMove()
+        if(!this.clickFlag){
+          if (this.hoverStopSwitch) this._stopMove()
+        }
       },
-      click() {
-        console.log('this.hoverStopSwitch----', this.hoverStopSwitch)
-        if (this.hoverStopSwitch) this._stopMove()
+      toggleClick() {
+        this.clickFlag = !this.clickFlag
+        if(this.clickFlag) {
+          this._stopMove()
+        }else{
+          this._startMove()
+        }
+        console.log('toggleClick----', this.clickFlag)
       },
       leave () {
-        if (this.hoverStopSwitch) this._startMove()
+        if(!this.clickFlag){
+          if (this.hoverStopSwitch) this._startMove()
+        }
       },
       _move () {
         // 鼠标移入时拦截_move()
