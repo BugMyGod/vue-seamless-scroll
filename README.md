@@ -14,6 +14,10 @@
 
 <h3 align="center">A simple, Seamless scrolling for Vue.js</h3>
 
+## Update log
+  * 1.1.0
+  Add click to pause or start
+
 ## Features
 
 * Initial configuration support

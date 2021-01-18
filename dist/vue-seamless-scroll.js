@@ -186,7 +186,6 @@ exports.default = {
       return this.data.length >= this.options.limitMoveNum;
     },
     hoverStopSwitch: function hoverStopSwitch() {
-      console.log('123---', this.options.hoverStop, this.autoPlay, this.scrollSwitch);
       return this.options.hoverStop && this.autoPlay && this.scrollSwitch;
     },
     canTouchScroll: function canTouchScroll() {
@@ -322,7 +321,6 @@ exports.default = {
       } else {
         this._startMove();
       }
-      console.log('toggleClick----', this.clickFlag);
     },
     leave: function leave() {
       if (!this.clickFlag) {
