@@ -136,7 +136,6 @@
         return this.data.length >= this.options.limitMoveNum
       },
       hoverStopSwitch () {
-        console.log('123---', this.options.hoverStop, this.autoPlay, this.scrollSwitch)
         return this.options.hoverStop && this.autoPlay && this.scrollSwitch
       },
       canTouchScroll () {
@@ -265,7 +264,6 @@
         }else{
           this._startMove()
         }
-        console.log('toggleClick----', this.clickFlag)
       },
       leave () {
         if(!this.clickFlag){
