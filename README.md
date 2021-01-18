@@ -13,6 +13,7 @@
 </a>
 
 <h3 align="center">A simple, Seamless scrolling for Vue.js</h3>
+<h4 align="center"> fork from https://github.com/chenxuan0000/vue-seamless-scroll</h4>
 
 ## Update log
   * 1.1.0
