@@ -1,4 +1,4 @@
-<h1 align="center">vue-seamless-scroll</h1>
+<h1 align="center">vue-seamless-scroll2</h1>
 
 
 <p align="center">
